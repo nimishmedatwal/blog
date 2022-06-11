@@ -1,3 +1,4 @@
+from pdb import post_mortem
 from django.contrib import messages,auth
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
@@ -61,3 +62,9 @@ def logout_user(request):
     auth.logout(request)
     return redirect('login_user')
 
+def addarticle(request):
+    if request.method== 'POST':
+        content=request.POST['content']
+        img=request.POST['img']
+    else:
+        return render(request, 'addarticle.html')

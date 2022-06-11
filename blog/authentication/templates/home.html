@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <title>Login System</title>
+  <title>Home</title>
 </head>
 
 <body>
@@ -23,7 +23,7 @@
     crossorigin="anonymous"></script>
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="home">Login System</a>
+    <a class="navbar-brand" href="home">Blogspot</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -40,6 +40,9 @@
         <li class="nav-item">
           <a class="nav-link" href="logout_user">LOGOUT</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="addarticle">Add Article </a>
+        </li>
         {% else %}
         <li class="nav-item">
           <a class="nav-link" href="register">SIGN UP</a>
@@ -47,26 +50,26 @@
         <li class="nav-item">
           <a class="nav-link" href="login_user">LOGIN</a>
         </li>
+
         {% endif %}
       </ul>
     </div>
   </nav>
-
-  <div class="container my-3">
-    <h1 style="text-align:center;">Welcome to Python Guides</h1>
-  </div>
-
-  <div class="card">
-    <div class="card-body">
-      <h3 style="text-align:center;">Thanks for landing on this page to know more about PythonGuides.com.</h3>
-      <br>
-      <h6>I welcome you to the website and hopefully, you got to learn something in Python. I started this website to
-        share my finding and learnings in Python with you.</h6>
-      <h6>To keep things simple, I am trying to write a lot of articles on Python. Feel free to give your valuable
-        comments and also share the articles if you are liking and hoping it will be helpful to someone.</h6>
-      <br>
-      <h2 style="text-align:center;">Also, Subscribe to Our YouTube Channel for FREE Python Video Tutorials.</h2>
+  {% if user.is_authenticated %}
+    <div class="container my-3">
+      <h1 style="text-align:center;">Welcome to Blogspot</h1>
     </div>
+    <div class="card" style="width: 18rem;">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div>
+  {% else %}
+    <div class="container my-3">
+      <h1 style="text-align:center;">Login to see content</h1>
+    </div>
+  {% endif %}
 </body>
 
 </html>
