@@ -2,6 +2,8 @@ from pdb import post_mortem
 from django.contrib import messages,auth
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
+from django.forms import modelform_factory
+from .models import blog
 # Create your views here.
 
 def register(request):
@@ -62,9 +64,18 @@ def logout_user(request):
     auth.logout(request)
     return redirect('login_user')
 
+
+NewArticle = modelform_factory(blog,exclude=[])
+
+
 def addarticle(request):
     if request.method== 'POST':
-        content=request.POST['content']
-        img=request.POST['img']
+        form=NewArticle(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("home")
+        else:
+            print("form not valid")
     else:
         return render(request, 'addarticle.html')
+
